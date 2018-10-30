@@ -1,0 +1,47 @@
+
+<div ng-controller="homeController">
+    <form name="myForm" ng-submit="submit()" novalidate>
+        <div>
+            <span style="color:red" ng-show="myForm.email.$invalid">
+                <span ng-show="validationError">* fields are mandatory</span>
+            </span>
+        </div>
+        <div ng-class="{true: 'error'}[submitted && myForm.email.$invalid]">
+            <div><label><span style="color:red">*</span>Email:</label></div>
+            <div><input type="email" name="email" ng-model="email" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required>
+                <span style="color:red" ng-show="myForm.email.$invalid">
+                    <span ng-show="submitted && myForm.email.$error.required">Email is mandatory</span>
+                    <span ng-show="myForm.email.$dirty && myForm.email.$error.pattern">Invalid email address.</span>
+                </span>
+            </div>
+        </div>
+        <div ng-class="{true: 'error'}[submitted && myForm.password.$invalid]">
+            <div><label><span style="color:red">*</span>Password:</label></div>
+            <div>
+                <input type="password" name="password" ng-model="password" 
+                ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/" required>
+                <span style="color:red" ng-show="myForm.password.$invalid">
+                    <span ng-show="submitted && myForm.password.$error.required">Password is mandatory</span>
+                    <span ng-show="myForm.password.$dirty && myForm.password.$error.pattern">Password should be atleast 8 characters long
+                        and should contain one number,one character and one special
+                        character.
+                    </span>
+                </span>
+            </div>    
+        </div>
+        <div>
+            <div><label>Gender:</label></div>
+            <div>
+                <select name="domain" ng-model="domain" > 
+                    <option value="Basic">Basic</option> 
+                    <option value="">Advanced</option>
+                    <option value="Pro">Pro</option>
+                </select>
+            </div>    
+        </div>
+        <div style="margin-top: 20px;">
+            <input type="submit" ng-click="submitted=true">
+            <input type="reset" ng-click="reset()">
+        </div>
+    </form>
+</div>

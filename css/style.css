@@ -1,0 +1,14 @@
+.container {
+    width: 877px;
+}
+.container{ 
+	margin-top:20px; 
+	margin-bottom:20px;
+}
+label{ 
+	font-weight:normal; 
+	width:100px;
+}
+input[type="submit"]:disabled{
+	color: graytext;
+}
